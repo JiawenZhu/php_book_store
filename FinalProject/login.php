@@ -13,9 +13,9 @@ print '<h2>Login Form</h2>
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Handle the form:
-	if ( (!empty($_POST['email'])) && (!empty($_POST['password'])) ) {
+	if ( (!empty($_POST['name'])) && (!empty($_POST['password'])) ) {
 
-		if ( (strtolower($_POST['email']) == 'me@example.com') && ($_POST['password'] == 'testpass') ) { // Correct!
+		if ( (strtolower($_POST['name']) == 'name') && ($_POST['password'] == 'testpass') ) { // Correct!
 
 			print '<p class="text--success">You are logged in!<br>Now you can blah, blah, blah...</p>';
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else { // Display the form.
 
 	print '<form action="login.php" method="post" class="form--inline">
-	<p><label for="email">Email Address:</label><input type="email" name="email" size="20"></p>
+	<p><label for="name">User Name:</label><input type="name" name="name" size="20"></p>
 	<p><label for="password">Password:</label><input type="password" name="password" size="20"></p>
 	<p><input type="submit" name="submit" value="Log In!" class="button--pill"></p>
 	</form>';
