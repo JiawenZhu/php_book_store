@@ -1,26 +1,33 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>View A Quotation</title>
+  <meta charset="utf-8">
+  <title>View A Quotation</title>
 </head>
-<body>
-<h1>Random Quotation</h1>
-<?php // Script 11.3 - view_quote.php
-/* This script displays and handles an HTML form. This script reads in a file and prints a random line from it. */
-
-// Read the file's contents into an array:
-$data = file('../quotes.txt');
-
-// Count the number of items in the array:
-$n = count($data);
-
-// Pick a random item:
-$rand = rand(0, ($n - 1));
-
-// Print the quotation:
-print '<p>' . trim($data[$rand]) . '</p>';
-
+<?php
+include('templates/header.html');
+include('../mysqli_connect.php');
 ?>
+
+<body>
+  <h1>Quotes</h1>
+  <?php
+  	// read data from database
+	$sql = "SELECT * FROM quotes";
+	$quote = mysqli_query($dbc, $sql);
+	if (mysqli_num_rows($quote) > 0) {
+		// output data of each row
+		while ($row = mysqli_fetch_assoc($quote)) {
+      print  $row["text"];
+			print '<br>';
+			print '<i><strong>' . $row["author"] . '</strong></i>';
+			print '<br><hr>';
+		}
+	} else {
+		echo "0 results";
+	}
+  ?>
 </body>
+
 </html>

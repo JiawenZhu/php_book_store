@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			// Redirect the user to the welcome page!
 			ob_end_clean(); // Destroy the buffer!
-			header('Location: welcome.php');
+			header('Location: user_welcome.php');
 			exit();
 
 		} else { // Incorrect!

@@ -3,6 +3,11 @@
 
 // Set the page title and include the header file:
 define('TITLE', 'Books by J.D. Salinger');
+// user not loggedin
+session_start();
+if (isset($_SESSION['loggedin'])) {
+	include('templates/user_login_header.html');
+} else
 include('templates/header.html');
 
 // Leave the PHP section to display lots of HTML:

@@ -1,10 +1,11 @@
-<?php // Script 8.14 - welcome.php
+<?php // Script 8.14 - user_welcome.php
 /* This is the welcome page. The user is redirected here
 after they successfully log in. */
 
 // Set the page title and include the header file:
 define('TITLE', 'Welcome to the J.D. Salinger Fan Club!');
-include('templates/header.html'); 
+
+include('templates/user_login_header.html'); 
 
 // Leave the PHP section to display lots of HTML:
 ?>
