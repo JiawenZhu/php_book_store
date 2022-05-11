@@ -22,14 +22,16 @@ include('../mysqli_connect.php');
 	if (mysqli_num_rows($quote) > 0) {
 		// output data of each row
 		while ($row = mysqli_fetch_assoc($quote)) {
+			$quote_id = $row['id'];
 			print  $row["text"] . " " . (($row["favorite"] == "Y") ? '<span style=color:red>Favorite!</span>' : '');
 			print '<br>';
 			print '<i><strong>' . $row["author"] . '</strong></i>';
 			print '<br>';
 			print '<i>' . $row["date_entered"] . '</i>';
 			print '<br>';
-			print '<a href="./edit.php">Edit</a> | <a href="./delete.php">Delete</a>';
+			print "<a href='update_quote.php?id=$quote_id'>Update</a> | <a href='delete_quote.php?id=$quote_id'>Delete</a>";
 			print '<br> <hr>';
+
 		}
 	} else {
 		echo "0 results";

@@ -46,8 +46,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<p><input type="submit" name="submit" value="Log In!" class="button--pill"></p>
 	</form>';
 }
-function cal(string $input){
-
-}
 
 include('templates/footer.html'); // Need the footer.

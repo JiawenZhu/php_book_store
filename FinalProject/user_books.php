@@ -1,5 +1,5 @@
 <?php 
-include('templates/header.html');
+include('./userlogin_check.php');
 // Script 8.5 - books.php
 /* This page lists J.D. Salinger's bibliography. */
 

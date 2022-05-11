@@ -3,7 +3,7 @@
 It uses templates to create the layout. */
 
 // Include the header:
-include('templates/header.html')
+include('userlogin_check.php')
 // Leave the PHP section to display lots of HTML:
 ?>
 
