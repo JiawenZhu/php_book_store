@@ -16,20 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$sql = $dbc->query("SELECT * FROM users WHERE username = '$username'");
 	if ((!empty($username)) && (!empty($password))) {
 		if ($sql->num_rows > 0) {
-			$data = $sql->fetch_array();
-			if (password_verify($password, $data['password'])) {
+			$user = $sql->fetch_array();
+			if (password_verify($password, $user['password']) && $user['status'] === 'OPEN') {
 				// starts session after a user login
 				session_start();
 				$_SESSION['username'] = $username;
 				$_SESSION['user_loggedin'] = time();
 
-				if($data['admin'] == 'Y'){
+				if ($user['admin'] == 'Y') {
 					$_SESSION['admin_loggedin'] = 'Y';
 					header('Location: admin_welcome.php');
-				}
-				else header('Location: user_welcome.php');
+				} else header('Location: user_welcome.php');
+			} elseif ($user['status'] === 'LOCKED') {  	// account is  locked
+				echo '<span style="color: red;">Sorry, your account has been locked!</span><br>';
+				echo '<a href="login.php">Try a different account to login</a>';
 			}
-		} else { // Incorrect!
+		} else { // Incorrect information!
 
 			print '<p class="text--error">The submitted username and password do not match those on file!<br>Go back and try again.</p>';
 			print '<a href="./login.php">try again here</a>';

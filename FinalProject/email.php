@@ -55,7 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail->FromName = 'Chris';            // the name you want to appear
     $mail->Subject = $_POST['subject'];              // Subject
     $mail->Body    = $_POST['notes'];           // Message
-    print $mail->SMTPDebug;
+    print $mail->addAddress;
+    print $email;
+    print $email;
+    print $mail->Subject;
+    print $mail->Body;
 
     if (!$mail->send()) {
         print '<h3 style="color: red;">ERROR! Unable to send Email<h3>';

@@ -18,8 +18,6 @@
 		if (isset($_POST['favorite'])) {
 			$sql = "UPDATE quotes SET author = '$author', text = '$text', favorite = 'Y' WHERE id = $id";
 		} else $sql = "UPDATE quotes SET author = '$author', text = '$text', favorite = 'N' WHERE id = $id";
-		print $id;
-
 
 		if ($dbc->query($sql) === TRUE) {
 			header('Location:  user_view_quote.php');
@@ -31,7 +29,6 @@
 	}
 	?>
 	<form action="update_quote.php" method="post">
-	
 		<p><label for="username">Author name</label><input type="text" name="author" size="20"></p>
 		<textarea name="text" rows="6" cols="30"></textarea>
 		<input name="favorite" type="checkbox" />

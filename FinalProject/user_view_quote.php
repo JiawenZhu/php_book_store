@@ -23,14 +23,14 @@ include('../mysqli_connect.php');
 		// output data of each row
 		while ($row = mysqli_fetch_assoc($quote)) {
 			$quote_id = $row['id'];
-			print  $row["text"] . " " . (($row["favorite"] == "Y") ? '<span style=color:red>Favorite!</span>' : '');
-			print '<br>';
-			print '<i><strong>' . $row["author"] . '</strong></i>';
-			print '<br>';
-			print '<i>' . $row["date_entered"] . '</i>';
-			print '<br>';
-			print "<a href='update_quote.php?id=$quote_id'>Update</a> | <a href='delete_quote.php?id=$quote_id'>Delete</a>";
-			print '<br> <hr>';
+			echo  $row["text"] . " " . (($row["favorite"] == "Y") ? '<span style=color:red>Favorite!</span>' : '');
+			echo '<br>';
+			echo '<i><strong>' . $row["author"] . '</strong></i>';
+			echo '<br>';
+			echo '<i>' . $row["date_entered"] . '</i>';
+			echo '<br>';
+			echo "<a href='update_quote.php?id=$quote_id'>Update</a> | <a href='delete_quote.php?id=$quote_id'>Delete</a>";
+			echo '<br> <hr>';
 
 		}
 	} else {
