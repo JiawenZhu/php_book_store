@@ -1,20 +1,27 @@
-<?php 
-include('templates/header.html');
-// Script 8.5 - books.php
-/* This page lists J.D. Salinger's bibliography. */
+<!doctype html>
+<html lang="en">
 
-// Set the page title and include the header file:
-define('TITLE', 'Books by J.D. Salinger');
+<head>
+	<meta charset="utf-8">
+	<title>Books</title>
+</head>
 
-// Leave the PHP section to display lots of HTML:
-?>
+<body>
+	<?php
+	define('TITLE', 'Books by J.D. Salinger');
+	include('templates/header.html');
 
-<h2>J.D. Salinger's Books</h2>
-<ul>
-	<li>The Catcher in the Rye</li>
-	<li>Nine Stories</li>
-	<li>Franny and Zooey</li>
-	<li>Raise High the Roof Beam, Carpenters and Seymour: An Introduction</li>
-</ul>
+	echo "<h1>My Books</h1>";
+	// Read the file's contents into an array:
+	$data = file('../users/user/books.csv');
 
+	// Count the number of items in the array:
+	foreach ($data as $item) {
+		echo "<p>" . $item . "</p>";
+	}
+
+	?>
+</body>
+
+</html>
 <?php include('templates/footer.html'); ?>

@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 } else { // Display the form.
 
-	print '<form action="login.php" method="post" class="form--inline">
+	echo '<form action="login.php" method="post" class="form--inline">
 	<p><label for="name">User Name:</label><input type="name" name="username" size="20"></p>
 	<p><label for="password">Password:</label><input type="password" name="password" size="20"></p>
 	<p><input type="submit" name="submit" value="Log In!" class="button--pill"></p>
