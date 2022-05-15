@@ -30,8 +30,33 @@
 		$data = file($file_dir);
 
 		// Count the number of items in the array:
-		foreach ($data as $item) {
-			echo "<p>" . $item . "</p>";
+		if (count($data) === 0) {
+			echo "There is no content to read";
+		} else {
+			foreach ($data as $item) {
+				$book_desc = explode('|', $item);
+				// list description of each book 0 is author name 1 is book name.
+				echo '<div class="ui container">
+				<table class="ui very basic collapsing celled table">
+						<thead>
+								<tr>
+										<th>Author Name</th>
+										<th>Book Name</th>
+								</tr>
+						</thead>
+						<tbody>
+								<tr>
+										<td>
+												' . $book_desc[0] . '
+										</td>
+										<td>
+												' . $book_desc[1] . '
+										</td>
+								</tr>
+						</tbody>
+				</table>
+		</div>';
+			}
 		}
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 			if (!empty($_POST['authorname']) && (!empty($_POST['bookname']))) { // Need some thing to write.
