@@ -18,8 +18,7 @@
     } else {
       header('Location:  user_view_quote.php');
     }
-
-
+    
     if ($dbc->query($sql) === TRUE) {
       header('Location:  user_view_quote.php');
     } else {

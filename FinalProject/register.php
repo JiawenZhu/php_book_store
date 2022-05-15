@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// basic password hash
 		$pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
 	}
-	$user_dir = "../users/" . $username;
+	$user_dir = "../users/" . $username ;
 	// insert data into database
 	$sql = "INSERT INTO users (username, password, user_dir, status, admin) VALUES ('$username', '$pwd_hashed', '$user_dir', 'OPEN', 'N')";
 
@@ -44,14 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		// Print a message:
 		if (mysqli_query($dbc, $sql)) {
-			// create a new username dir and a file(book.csv)
+			// create a new username directory and a file(book.csv) in the directory
 			mkdir($user_dir, 0777, true);
-			$f = fopen('books.csv', 'w');
+
+			$f = fopen($user_dir . '/books.csv', 'w');
 			// can not create a file
 			if (!$f) {
 				die('Error creating the file ' . 'books.csv');
 			}
-			echo "New user created successfully";
+			echo "New user created successfully! <a href='login.php'>Click here to login </a>";
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($dbc);
 		}

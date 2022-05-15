@@ -17,6 +17,9 @@
 
 	// Count the number of items in the array:
 	foreach ($data as $item) {
+		if(count($item)===0){
+			echo "There is no content to read";
+		}
 		echo "<p>" . $item . "</p>";
 	}
 
